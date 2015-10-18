@@ -64,7 +64,7 @@ app.delete('/items/:id', function(req, res){
 		return res.sendStatus(400);
 
 	if(storage.remove(req.params.id))
-		return res.status(200).json('');
+		return res.sendStatus(200);
 });
 
 app.put('/items/:id', jsonParser, function(req, res) {
@@ -76,3 +76,6 @@ app.put('/items/:id', jsonParser, function(req, res) {
 });
 
 app.listen(process.env.PORT || 8080);
+
+exports.app = app;
+exports.storage = storage;
